@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ice Cream Order Page</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="style.css">
+    <h1>Welcome to the Ice Cream Order Page!</h1>
+    <div>
+      <img src="chocolate.jpg"  alt="Ice Cream 1" width="200" />
+      <h2>Ice Cream 1</h2>
+      <p>Price: $5.00</p>
+      <button onclick="orderIceCream(1, 'Ice Cream 1', 5.00)">Order</button>
+    </div>
+    <div>
+      <img src="strawberry.jpg" alt="Ice Cream 2" width="200" />
+      <h2>Ice Cream 2</h2>
+      <p>Price: $6.00</p>
+      <button onclick="orderIceCream(2, 'Ice Cream 2', 6.00)">Order</button>
+    </div>
+    <div>
+      <img src="vanillla.jpg" alt="Ice Cream 3" width="200" />
+      <h2>Ice Cream 3</h2>
+      <p>Price: $7.00</p>
+      <button onclick="orderIceCream(3, 'Ice Cream 3', 7.00)">Order</button>
+    </div>
+
+    <script>
+      function orderIceCream(id, name, price) {
+        let quantity = prompt("Enter the quantity you would like to order");
+        if (quantity > 0) {
+          let totalPrice = price * quantity;
+          let confirmation = confirm(
+            "You have ordered " +
+              quantity +
+              " scoops of " +
+              name +
+              " for a total price of $" +
+              totalPrice.toFixed(2) +
+              ".\n\nClick 'OK' to finalize the order."
+          );
+          if (confirmation) {
+            alert("Thank you for your order!");
+            // Here you can add code to send the order to the server and display the receipt
+          } else {
+            orderIceCream(id, name, price);
+          }
+        } else {
+          alert("Please enter a valid quantity.");
+          orderIceCream(id, name, price);
+        }
+      }
+    </script>
+    <?php
+
+$flavor = "vanilla";
+
+echo "<p>Your favorite flavor of ice cream is ";
+echo $flavor;
+echo ".</p>";
+
+if ($flavor == "cookie dough") {
+    echo "<p>Hal's favorite flavor is cookie dough, also!</p>";
+}
+
+?>s
+  </body>
+</html>
